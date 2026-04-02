@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Amiri, Cormorant_Garamond, Manrope, Noto_Nastaliq_Urdu } from "next/font/google";
+import { Amiri, Cormorant_Garamond, Gulzar, Manrope } from "next/font/google";
 import "./globals.css";
 
 const amiri = Amiri({
@@ -8,9 +8,9 @@ const amiri = Amiri({
   variable: "--font-arabic",
 });
 
-const notoNastaliq = Noto_Nastaliq_Urdu({
+const gulzar = Gulzar({
   subsets: ["arabic", "latin"],
-  weight: ["400", "700"],
+  weight: ["400"],
   variable: "--font-nastaliq",
 });
 
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${amiri.variable} ${cormorant.variable} ${manrope.variable} ${notoNastaliq.variable}`}>
+    <html lang="en" className={`${amiri.variable} ${cormorant.variable} ${manrope.variable} ${gulzar.variable}`}>
       <body className="font-[family-name:var(--font-sans)]">{children}</body>
     </html>
   );
