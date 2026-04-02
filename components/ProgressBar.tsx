@@ -4,14 +4,21 @@ type ProgressBarProps = {
 };
 
 export function ProgressBar({ current, total }: ProgressBarProps) {
-  const width = total > 0 ? ((current + 1) / total) * 100 : 0;
+  const dotCount = 20;
+  const filledDots = total > 0 ? Math.round(((current + 1) / total) * dotCount) : 0;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-30 h-1 bg-white/10">
-      <div
-        className="h-full bg-[var(--gold-400)] transition-[width] duration-300 ease-out"
-        style={{ width: `${width}%` }}
-      />
+    <div className="fixed bottom-3 left-1/2 z-30 flex -translate-x-1/2 gap-2">
+      {Array.from({ length: dotCount }, (_, i) => (
+        <div
+          key={i}
+          className={`h-2 w-2 rounded-full transition-all duration-300 ${
+            i < filledDots
+              ? "bg-amber-400 shadow-[0_0_6px_rgba(251,191,36,0.5)]"
+              : "bg-white/15"
+          }`}
+        />
+      ))}
     </div>
   );
 }
